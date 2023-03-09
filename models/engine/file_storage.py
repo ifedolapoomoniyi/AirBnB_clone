@@ -4,6 +4,11 @@
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 """The json module for serialization and deserialization"""
 
 
@@ -35,9 +40,9 @@ class FileStorage:
 
         path = FileStorage.__file_path
 
-        new_obj = {k: FileStorage.__objects[k].to_dict()
-                for k in FileStorage.__objets.keys()}
-        
+        new_obj = {k: FileStorage.__objects[k].to_dict(
+            )for k in FileStorage.__objets.keys(}}
+
         with open(path, "w") as file:
             json.dump(new_obj, file)
 
