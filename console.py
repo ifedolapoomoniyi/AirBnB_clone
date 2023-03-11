@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             # checking for commands to call
             if key == tokens[1]:
                 # for if args is parentheses eg("something")
-                if tokens[2] != "":
+                if tokens[2] != "" and len(tokens) < 6:
                     print(tokens)
                     striped_arg = tokens[2].replace('"', '')
                     args = f"{tokens[0]} {striped_arg}"
@@ -172,17 +172,30 @@ class HBNBCommand(cmd.Cmd):
         object_json = storage.all()
         if arg == "":
             print("** class name missing **")
+            return False
         elif tokens[0] not in HBNBCommand.CLASSNAMES:
             print("* class doesn't exist **")
+            return False
         elif len(tokens) < 2:
             print("** instance id missing **")
+            return False
 
         elif f"{tokens[0]}.{tokens[1]}" not in object_json.keys():
             print("** no instance found **")
+            return False
+
         elif len(tokens) < 3:
             print("** attribute name missing **")
+            return False
 
-        if len(tokens) == 4:
+        elif len(tokens) == 3:
+            try:
+                type(eval(tokens[2])) != dict
+            except NameError:
+                print("** value missing **")
+                return False
+
+        if len(tokens) > 3:
             obj = object_json[f"{tokens[0]}.{tokens[1]}"]
             if tokens[2] in obj.__class__.__dict__.keys():
                 # get the attribute value type for typecast
@@ -192,7 +205,7 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[str(tokens[2])] = tokens[3]
 
         elif type(eval(tokens[2])) == dict:
-            obj = objdict[f"{tokens[0]}.{tokens[1]}"]
+            obj = object_json[f"{tokens[0]}.{tokens[1]}"]
             for k, v in eval(tokens[2]).items():
                 if (k in obj.__class__.__dict__.keys() and
                         type(obj.__class__.__dict__[k]) in [str, int, float]):
@@ -204,6 +217,8 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_count(self, arg):
+        """counts"""
+
         tokens = tokenize(arg)
         # set counter
         count = 0
