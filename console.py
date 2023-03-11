@@ -23,7 +23,7 @@ def tokenize(arg: str) -> list:
     Returns:
         list: list of strings
     """
-    token = re.split(r"[ .()]", arg)
+    token = re.split(r"[ .(),]", arg)
     return token
 
 
@@ -61,25 +61,25 @@ class HBNBCommand(cmd.Cmd):
             if key == tokens[1]:
                 # for if args is parentheses eg("something")
                 if tokens[2] != "" and len(tokens) < 6:
-                    print(tokens)
+                    # print(tokens)
                     striped_arg = tokens[2].replace('"', '')
                     args = f"{tokens[0]} {striped_arg}"
                     return func_dict[tokens[1]](args)
-                elif len(tokens) == 6:
+                elif len(tokens) > 6:
                     # for update version 1
-                    print(tokens)
-                    striped1_arg = tokens[2].replace('"', '')
-                    striped2_arg = tokens[3].replace('"', '')
-                    striped3_arg = tokens[4].replace('"', '')
-                    args = f"{tokens[0]} {striped1_arg} {striped2_arg}" \
-                        "{striped3_arg}"
+                    # print(tokens)
+                    arg1 = tokens[2].replace('"', '')
+                    arg2 = tokens[4].replace('"', '')
+                    arg3 = tokens[6].replace('"', '')
+                    args = f"{tokens[0]} {arg1} {arg2} {arg3}"
+                    # print(args)
                     return func_dict[tokens[1]](args)
 
                 else:
-                    print(tokens)
+                    # print(tokens)
                     return func_dict[tokens[1]](tokens[0])
 
-        print(tokens)
+        # print(tokens)
 
         print("*** Unknown syntax: {}".format(arg))
         return False
@@ -171,27 +171,31 @@ class HBNBCommand(cmd.Cmd):
         tokens = tokenize(arg)
         object_json = storage.all()
         if arg == "":
+            # print(tokens)
             print("** class name missing **")
             return False
         elif tokens[0] not in HBNBCommand.CLASSNAMES:
+            # print(tokens)
             print("* class doesn't exist **")
             return False
         elif len(tokens) < 2:
+            # print(tokens)
             print("** instance id missing **")
             return False
 
         elif f"{tokens[0]}.{tokens[1]}" not in object_json.keys():
+            # print(tokens)
             print("** no instance found **")
             return False
-
         elif len(tokens) < 3:
+            # print(tokens)
             print("** attribute name missing **")
             return False
-
         elif len(tokens) == 3:
             try:
                 type(eval(tokens[2])) != dict
             except NameError:
+                # print(tokens)
                 print("** value missing **")
                 return False
 
