@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg: str) -> bool:
         """Quit command to exit the program"""
 
-        return True`
+        return True
 
     def default(self, arg):
         func_dict = {
@@ -72,8 +72,8 @@ class HBNBCommand(cmd.Cmd):
                     striped1_arg = tokens[2].replace('"', '')
                     striped2_arg = tokens[3].replace('"', '')
                     striped3_arg = tokens[4].replace('"', '')
-                    args = f"{tokens[0]} {striped1_arg} {striped2_arg}
-                    {striped3_arg}"
+                    args = f"{tokens[0]} {striped1_arg} {striped2_arg}" \
+                        "{striped3_arg}"
                     return func_dict[tokens[1]](args)
 
                 else:
