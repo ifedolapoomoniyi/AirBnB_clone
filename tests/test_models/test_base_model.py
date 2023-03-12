@@ -12,6 +12,7 @@ import models
 import unittest
 from datetime import datetime
 from models.base_model import BaseModel
+from time import sleep
 
 
 class TestBaseModel_instantiation(unittest.TestCase):
@@ -60,9 +61,6 @@ class TestBaseModel_instantiation(unittest.TestCase):
         sleep(0.05)
         b2 = BaseModel()
         self.assertLess(b1.updated_at, b2.updated_at)
-
-    def test_kwargs_param1(self):
-        b3 = BaseModel(name)
 
 if __name__ == '__main__':
     unittest.main()
