@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
 
         tokens = tokenize(arg)
         object_json = storage.all()
-        if len(tokens) == 0:
+        if arg == "":
             # print(tokens)
             print("** class name missing **")
             return False
