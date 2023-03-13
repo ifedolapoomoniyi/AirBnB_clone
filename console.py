@@ -164,7 +164,7 @@ class HBNBCommand(cmd.Cmd):
             # print(tokens)
             print("* class doesn't exist **")
             return False
-        elif len(tokens) == 1:
+        elif len(tokens) < 2:
             # print(tokens)
             print("** instance id missing **")
             return False
@@ -173,7 +173,7 @@ class HBNBCommand(cmd.Cmd):
             # print(tokens)
             print("** no instance found **")
             return False
-        elif len(tokens) == 2:
+        elif len(tokens) < 3:
             # print(tokens)
             print("** attribute name missing **")
             return False
@@ -185,7 +185,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return False
 
-        if len(tokens) == 4:
+        if len(tokens) > 3:
             obj = object_json[f"{tokens[0]}.{tokens[1]}"]
             if tokens[2] in obj.__class__.__dict__.keys():
                 # get the attribute value type for typecast
