@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
         if arg == "":
             print("** class name missing **")
         elif tokens[0] not in HBNBCommand.CLASSNAMES:
-            print("** class doesn't exit **")
+            print("** class doesn't exist **")
         else:
             print(eval(tokens[0])().id)
             storage.save()
@@ -192,7 +192,7 @@ class HBNBCommand(cmd.Cmd):
                 val_type = type(obj.__class__.__dict__[tokens[2]])
                 obj.__dict__[tokens[2]] = val_type(tokens[3])
             else:
-                obj.__dict__[str(tokens[2])] = tokens[3]
+                obj.__dict__[tokens[2]] = tokens[3]
 
         elif type(eval(tokens[2])) == dict:
             obj = object_json[f"{tokens[0]}.{tokens[1]}"]
@@ -221,7 +221,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """Handles EOF"""
-
+        return True
         raise SystemExit
 
     def emptyline(self):
