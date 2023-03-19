@@ -7,10 +7,9 @@ body{
 }
 
 .container{
-    max-width: 100px;
+    max-width: 1000px;
+    display: flex;
+    margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;
-    display: flex;
-    justify-self: center;
-    margin: auto;
 }
