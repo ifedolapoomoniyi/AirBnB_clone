@@ -1,0 +1,155 @@
+body{
+    position: relative;
+}
+
+.places h1{
+    font-size: 30px;
+}
+
+.places article{
+    display: flex;
+    flex-wrap: wrap;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.places article{
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+}
+
+.big-h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.price_by_night{
+    color: #FF5A5F;
+    border: #FF5A5F solid 4px;
+    border-radius: 50%;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexer article{
+    position: relative;
+}
+
+.information{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    border-top: #DDDDDD 1px solid;
+    border-bottom: #DDDDDD 1px solid;
+}
+
+.max_guest_icon{
+    background-image: url('../images/icon_group.png');
+    height: 50px;
+    width: 50px;
+}
+
+.number_rooms_icon{
+    background-image: url('../images/icon_bed.png');
+    height: 50px;
+    width: 50px;
+}
+
+.number_bathrooms_icon{
+    background-image: url('../images/icon_bath.png');
+    height: 50px;
+    width: 50px;
+}
+
+.user{
+    padding: 15px 0 10px 0;
+}
+
+.amenities_text{
+    margin-top: 40px;
+}
+
+.amenities_text li{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.TV_icon{
+    background-image: url("../images/icon_tv.png");
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    background-size: contain;
+}
+
+.wifi_icon{
+    background-image: url("../images/icon_wifi.png");
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    background-size: contain;
+}
+
+.pets_icon{
+    background-image: url("../images/icon_pets.png");
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    background-size: contain;
+
+}
+
+.amenities_text h2{
+    border-bottom: 1px #DDDDDD solid ;
+    font-size: 16px;
+}
+
+.reviews{
+    margin-top: 40px;
+}
+
+.reviews h2{
+    font-size: 16px;
+    border-bottom: #DDDDDD 1px solid;
+}
+
+.reviews h3{
+    font-size: 14px;
+    padding: 7px 0;
+    margin: 0;
+    border: 0;
+}
+
+.reviews p{
+    font-size: 12px;
+    padding: 0 0 10px 0;
+    margin: 0;
+    border: 0;
+}
